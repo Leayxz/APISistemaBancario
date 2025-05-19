@@ -1,25 +1,21 @@
-# 1ª API: Sistema Bancário
-Esse é meu primeiro projeto: Uma API bancária simples. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldo e visualização de histórico de transações. Além disso, esse é meu primeiro contato prático com Git, GitHub e versionamento de código.
+# API Sistema Bancário - V001
+A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldo e visualização de histórico de transações. Nesta versão, implementei modularização, conteinerização com Docker, e migrei para o banco de dados PostgreSQL, aprimorando a escalabilidade, manutenção e segurança do sistema.
 
+## 🚀 Novas Tecnologias Utilizadas
+- **PostgreSQL** – Banco de dados relacional robusto e confiável;
+- **Docker & Docker Compose** – Conteinerização do backend e banco de dados;
+- **dotenv** – Gerenciamento seguro de variáveis de ambiente;
+- **ESModules** – Organização do código em múltiplos arquivos, melhorando manutenção e legibilidade;
+- **Git & GitHub** – Controle de versão com branches e commits claros, demonstrando evolução contínua do projeto;
 
-## 🚀 Tecnologias Utilizadas
-- **Node.js** – Ambiente de execução JavaScript;
-- **Express** – Framework web para criação da API;
-- **SQLite3** – Banco de dados leve e embutido;
-- **bcrypt** – Para hash e verificação segura de senhas;
-- **HTML** – Formulários simples para interação;
+## 📌 Novas Funcionalidades
+- API separada por módulos para cadastro/login, depósito/saque e histórico/saldo;
+- Configuração Docker que orquestra Backend e PostgreSQL, facilitando testes e deploy;
 
-## 📌 Funcionalidades
-- Cadastro de clientes com hash de senha usando bcrypt;
-- Login com validação;
-- Depósitos e saques com suporte a valores com ponto ou vírgula;
-- Armazenamento de transações com precisão em centavos, evitando erros de arredondamento;
-- Visualização de saldo atual individual por cliente;
-- Histórico completo de transações individualizado por cliente;
-
-## 🧠 Aprendizados
-- Criptografia de senhas com bcrypt;
-- Manipulação segura de valores monetários em JavaScript;
-- Interação entre backend, banco de dados com SQLite, e HTML;
-- Estruturação de rotas e lógica RESTful com Express;
-- Boas práticas de modelagem de banco de dados e tabelas;
+## 🧠 Novos Aprendizados
+- Modularização do código para facilitar escalabilidade e manutenção;
+- Docker & Docker Compose para orquestração de containers, garantindo ambientes de desenvolvimento ou produção;
+- Migração do banco SQLite para PostgreSQL, adaptando queries e criação de tabelas;
+- Uso de dotenv para gerenciamento seguro das credenciais;
+- Versionamento git no uso de branches para controle de versões;
+- Desenvolvimento de APIs RESTful com boas práticas de nomenclatura, verbos HTTP e separação de responsabilidades;

@@ -1,0 +1,40 @@
+services:
+  backend:
+
+    build:
+      context: .
+      dockerfile: CodigoFonte/Dockerfile
+
+    ports:
+    - 3000:3000
+
+    networks:
+    - conexaoBackend
+
+    env_file:
+    - .env.example
+
+    depends_on:
+      - db
+
+    restart: unless-stopped
+
+  db:
+    image: postgres:17
+
+    volumes:
+    - dbdata:/var/lib/postgresql/data
+
+    networks:
+    - conexaoBackend
+    
+    env_file:
+    - .env.example
+
+    restart: unless-stopped
+
+networks:
+  conexaoBackend:
+
+volumes:
+  dbdata:
