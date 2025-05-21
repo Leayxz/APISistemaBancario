@@ -1,5 +1,4 @@
 // INICIANDO O SERVIDOR E IMPORTANDO TODA A API
-
 import { servidor } from "./1.Servidor.js";
 
 import "./3.CadastroLogin.js";
