@@ -1,9 +1,10 @@
 import bcrypt from "bcrypt";
 import path from "path";
-import { servidor } from "./1.Servidor.js";
-import { conexao } from "./6.DB.js";
-import { fileURLToPath } from "url";
-import { gerarToken } from "./7.JWT.js";
+import {servidor} from "./1.Servidor.js";
+import {conexao} from "./6.DB.js";
+import {fileURLToPath} from "url";
+import {gerarToken} from "./7.JWT.js";
+import {validar} from "./8.ValidarDados.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -15,7 +16,13 @@ servidor.get("/", function (requisicao, resposta) {
 
 servidor.post("/", async function (requisicao, resposta) {
 
-    const {nome, cpf, email, numerodaconta, senha} = requisicao.body;
+    let {nome, cpf, email, numerodaconta, senha} = requisicao.body;
+
+    const {error} = validar({ nome, cpf, email, numerodaconta, senha});
+    if (error) {return resposta.send("Erro Nos Dados: Verifique e Tente Novamente! <br> Verifique Se Digitou Um E-mail Válido!");}
+
+    const verificarConta = await conexao.query("SELECT * FROM Clientes WHERE numerodaconta = $1", [numerodaconta])
+    if (verificarConta.rows.length > 0) {return resposta.send("Número De Conta Já Existe. Tente Novamente!")}
     const senhaHash = await bcrypt.hash(senha, 10);
 
     await conexao.query(`INSERT INTO Clientes (nome, cpf, email, numerodaconta, senha) VALUES ($1, $2, $3, $4, $5)`, [nome, cpf, email, numerodaconta, senhaHash]);

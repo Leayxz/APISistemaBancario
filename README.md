@@ -1,23 +1,24 @@
-# API Sistema Bancário - V002
-A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldos e visualização de histórico de transações. Nesta versão, implementei autenticação com JWT, cookies HTTP-only e proteção de rotas com middleware personalizado, garantindo segurança para múltiplos usuários simultaneamente.
+# API Sistema Bancário - V003
+A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldos e visualização de histórico de transações. Nesta versão, implementei validação robusta dos dados e controle de unicidade do número da conta no banco de dados.
 
 ## 🚀 Novas Tecnologias Utilizadas
-- **JWT - jsonwebtoken** – Autenticação via token;
-- **cookie-parser** – Leitura de cookies para autenticação persistente;
-- **Git & GitHub** – Controle de versão com branches e commits claros, demonstrando evolução contínua do projeto;
+- **Joi** – Validação de dados recebidos no backend;
+- **HTML5 & Regex** – Validação básica e restrição de inputs no frontend;
+- **Modularização** – Separação da lógica de validação em arquivo dedicado;
 
 ## 📌 Novas Funcionalidades
-- Login autenticado com geração de token JWT e limite de tempo;
-- Armazenamento seguro do token em cookies HTTP-only (Inacessível via JS);
-- Middleware para proteção de rotas (Verificando o token);
-- Redirecionamento de usuários logados para página protegida;
-- Suporte a múltiplos usuários autenticados simultaneamente;
+- Formulário com validação usando regex e atributos HTML pattern, maxlength, required;
+- Backend que valida os dados recebidos com Joi, garantindo formato, presença e padrões específicos;
+- Uso de regex customizado para validar nomes compostos, emails e números;
+- Tratamento de espaços em branco no início e fim dos campos com .trim() no Joi;
+- Consulta no banco para evitar duplicidade do número da conta, retornando erro caso já exista;
+- Modularização da validação para facilitar manutenção e clareza do código;
 
 ## 🧠 Novos Aprendizados
-- Autenticação com JWT + cookies;
-- Uso real de cookies HTTP-only para autenticação persistente;
-- Implementação do JWT com controle de acesso por sessão;
-- Criação de middleware para proteger rotas;
+- Validação dupla para garantir segurança, validando sempre no frontend e no backend, evitando dados inválidos ou maliciosos;
+- Regex personalizado para validar padrões específicos e impedir inputs mal formatados;
+- Uso combinado de .trim() + regex no Joi para limpeza e validação rigorosa dos dados no backend;
+- Consulta de unicidade no banco para prevenir dados duplicados como número de conta;
 
 ## 🧪 Caso Queira Testar
 - Acredito que basta abrir o terminal e digitar:

@@ -18,7 +18,7 @@ async function criarTabela() {
         nome TEXT,
         cpf TEXT,
         email TEXT,
-        numerodaconta TEXT,
+        numerodaconta TEXT UNIQUE,
         senha TEXT)`);
 
     await conexao.query(`
