@@ -1,24 +1,17 @@
-# API Sistema Bancário - V003
-A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldos e visualização de histórico de transações. Nesta versão, implementei validação robusta dos dados e controle de unicidade do número da conta no banco de dados.
+# API Sistema Bancário - V004
+A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldos e visualização de histórico de transações. Nesta versão, foi implementada proteção CORS para garantir segurança no acesso à API, permitindo que somente frontends autorizados consumam os dados.
 
 ## 🚀 Novas Tecnologias Utilizadas
-- **Joi** – Validação de dados recebidos no backend;
-- **HTML5 & Regex** – Validação básica e restrição de inputs no frontend;
-- **Modularização** – Separação da lógica de validação em arquivo dedicado;
+- CORS – Controle de acesso baseado em domínio;
 
 ## 📌 Novas Funcionalidades
-- Formulário com validação usando regex e atributos HTML pattern, maxlength, required;
-- Backend que valida os dados recebidos com Joi, garantindo formato, presença e padrões específicos;
-- Uso de regex customizado para validar nomes compostos, emails e números;
-- Tratamento de espaços em branco no início e fim dos campos com .trim() no Joi;
-- Consulta no banco para evitar duplicidade do número da conta, retornando erro caso já exista;
-- Modularização da validação para facilitar manutenção e clareza do código;
+- CORS configurado para liberar apenas domínios autorizados;
+- Restrições para métodos HTTP permitidos via CORS (GET e POST);
 
 ## 🧠 Novos Aprendizados
-- Validação dupla para garantir segurança, validando sempre no frontend e no backend, evitando dados inválidos ou maliciosos;
-- Regex personalizado para validar padrões específicos e impedir inputs mal formatados;
-- Uso combinado de .trim() + regex no Joi para limpeza e validação rigorosa dos dados no backend;
-- Consulta de unicidade no banco para prevenir dados duplicados como número de conta;
+- Implementação e testes práticos do CORS para segurança da API;
+- Como configurar o CORS no Express para aceitar apenas origens específicas;
+- Entendimento da importância do CORS na prevenção de ataques do tipo Cross-Site Request Forgery (CSRF);
 
 ## 🧪 Caso Queira Testar
 - Acredito que basta abrir o terminal e digitar:
@@ -27,3 +20,4 @@ git clone https://github.com/Leayxz/APISistemaBancario.git
 docker compose up --build
 ```
 - E no navegador: localhost:3000
+- Para testar o CORS, rode um frontend separado na porta 2000 e tente acessar a API.
