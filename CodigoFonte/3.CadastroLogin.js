@@ -36,15 +36,17 @@ servidor.get("/login", function (requisicao, resposta) {
 });
 
 servidor.post("/user/logado", async function (requisicao, resposta) {
-    const { numerodaconta, senha } = requisicao.body;
+    const { nome, numerodaconta, senha } = requisicao.body;
 
     const dados = await conexao.query("SELECT * FROM Clientes WHERE numerodaconta = $1", [numerodaconta]);
-    if (!dados.rows.length) {resposta.send("Número Da Conta Não Encontrado! Não Esqueça De Se Cadastrar!");}
+    if (!dados.rows.length) {return resposta.send("Número Da Conta Não Encontrado! Não Esqueça De Se Cadastrar!");}
     const senhaCerta = await bcrypt.compare(senha, dados.rows[0].senha);
-    if (!senhaCerta) {resposta.send("Encontramos Sua Conta, Mas Não Sua Senha! Esqueceu Sua Senha?");}
+    if (!senhaCerta) {return resposta.send("Encontramos Sua Conta, Mas Não Sua Senha! Esqueceu Sua Senha?");}
  
     const token = gerarToken({id: dados.rows[0].id});
     resposta.cookie("token", token, {httpOnly: true, path: "/user/" , maxAge: 3600000});
+    resposta.clearCookie("nome", {path: "/user/"});
+    resposta.cookie("nome", dados.rows[0].nome, {path: "/user/", maxAge: 3600000});
 
     return resposta.sendFile(path.join(__dirname, "../FrontEnd/3.DepositoSaque.html"));
 });

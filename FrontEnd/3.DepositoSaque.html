@@ -5,7 +5,7 @@
     </head>
 
     <body style = "text-align: center">
-        <h1> Olá, Fulano <br> O Que Gostaria De Fazer Hoje? </h1>
+        <h1> Olá, <span id = "user"></span> <br> O Que Gostaria De Fazer Hoje? </h1>
 
         <form action = "/user/depositos" method = "post">
 
@@ -28,7 +28,16 @@
         <form action = "/user/saldoatual" method = "post">
             <button type = "submit" > VER SALDO ATUAL </button>
         </form>
-
     </body>
+
+    <script>
+        const cookieCompleto = document.cookie;
+
+        const cookieQuebrado = cookieCompleto.split("; ");
+        const cookieIsolado = cookieQuebrado.find(procurar => procurar.startsWith("nome="));
+        const nome = decodeURIComponent(cookieIsolado.split("=")[1]);
+        
+        document.getElementById("user").textContent = nome || "Visitante";
+    </script>
 
 </html>

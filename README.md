@@ -1,17 +1,21 @@
-# API Sistema Bancário - V004
-A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldos e visualização de histórico de transações. Nesta versão, foi implementada proteção CORS para garantir segurança no acesso à API, permitindo que somente frontends autorizados consumam os dados.
+# API Sistema Bancário - V005
+A evolução da minha API bancária. Ela permite o cadastro de clientes, login, depósitos, saques, consulta de saldos e visualização de histórico de transações. Nesta versão, foram implementadas práticas de segurança contra ataques XSS e melhorias no gerenciamento de sessões com cookies e tokens JWT.
 
 ## 🚀 Novas Tecnologias Utilizadas
-- CORS – Controle de acesso baseado em domínio;
+- Nenhuma, apenas reforço de segurança com as já aprendidas;
 
 ## 📌 Novas Funcionalidades
-- CORS configurado para liberar apenas domínios autorizados;
-- Restrições para métodos HTTP permitidos via CORS (GET e POST);
+- Nomes de usuários cadastrado individualizados pós login;
+- Limpeza de cookies antigos antes de definir novos, evitando vazamento de dados entre sessões;
+- Proteção contra XSS ao evitar innerHTML, utilizando textContent e decodeURIComponent;
 
 ## 🧠 Novos Aprendizados
-- Implementação e testes práticos do CORS para segurança da API;
-- Como configurar o CORS no Express para aceitar apenas origens específicas;
-- Entendimento da importância do CORS na prevenção de ataques do tipo Cross-Site Request Forgery (CSRF);
+- Proteção contra Cross-Site Scripting (XSS);
+- .textContent ao invés de innerHTML;
+- encodeURIComponent() para URLs seguras;
+- Validação e limpeza de cookies de entradas do usuário;
+- Leituras com document.cookie;
+- Extração de valores com .split() e .find(startsWith());
 
 ## 🧪 Caso Queira Testar
 - Acredito que basta abrir o terminal e digitar:
